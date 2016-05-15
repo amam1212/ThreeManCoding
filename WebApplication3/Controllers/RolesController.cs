@@ -7,6 +7,7 @@ using WebApplication3.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
+using System.Web.Security;
 
 namespace WebApplication3.Controllers
 {
@@ -20,6 +21,34 @@ namespace WebApplication3.Controllers
             get { return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>(); }
             private set { _userManager = value; }
         }
+
+
+        public ActionResult GetUsers()
+        {
+            var allusers = context.Users.ToList();
+           
+
+
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
+            
+
+            var wholesale = roleManager.FindByName("Wholesale").Users.First();
+                var usersInRole = allusers.Where(u => u.Roles.Select(r => r.RoleId).Contains(wholesale.RoleId)).ToList();
+                var userwholesale = usersInRole.Select(user => new UserViewModel { Username = user.UserName, Roles = "Wholesale" }).ToList();
+
+                var retail = roleManager.FindByName("Retail").Users.First();
+                var usersInRole2 = allusers.Where(u => u.Roles.Select(r => r.RoleId).Contains(retail.RoleId)).ToList();
+                var userretail = usersInRole2.Select(user => new UserViewModel { Username = user.UserName, Roles = "Retail" }).ToList();
+
+
+                userwholesale.AddRange(userretail); // Allmember
+                
+                return View(userwholesale);
+           
+        }
+
+
+
         //
         // GET: /Roles/
         public ActionResult Index()
@@ -160,6 +189,18 @@ namespace WebApplication3.Controllers
 
             return View("ManageUserRoles");
         }
+
+
+
+        //
+        // GET: /Roles/Create
+        [HttpGet]
+        public ActionResult EditRoleForUser(string userName, string userrole, string x)
+        {
+            var model = new UserViewModel { Username = userName, Roles = userrole };
+            return View(model);
+        }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]

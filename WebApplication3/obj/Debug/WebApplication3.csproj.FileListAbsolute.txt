@@ -81,3 +81,4 @@ C:\Users\DELL\Documents\Visual Studio 2015\Projects\WebApplication3\WebApplicati
 C:\Users\DELL\Documents\Visual Studio 2015\Projects\WebApplication3\WebApplication3\obj\Debug\WebApplication3.pdb
 C:\Users\DELL\Documents\Visual Studio 2015\Projects\WebApplication3\WebApplication3\obj\Debug\WebApplication3.Migrations.InitialCreate.resources
 C:\Users\DELL\Documents\Visual Studio 2015\Projects\WebApplication3\WebApplication3\obj\Debug\WebApplication3.csproj.GenerateResource.Cache
+C:\Users\DELL\Documents\Visual Studio 2015\Projects\WebApplication3\WebApplication3\obj\Debug\WebApplication3.csprojResolveAssemblyReference.cache
