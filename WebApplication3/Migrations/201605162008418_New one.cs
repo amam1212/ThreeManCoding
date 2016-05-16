@@ -3,7 +3,7 @@ namespace WebApplication3.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class Newone : DbMigration
     {
         public override void Up()
         {
@@ -13,6 +13,7 @@ namespace WebApplication3.Migrations
                     {
                         ID = c.String(nullable: false, maxLength: 128),
                         Name = c.String(),
+                        images = c.String(),
                         Price = c.Double(nullable: false),
                     })
                 .PrimaryKey(t => t.ID);

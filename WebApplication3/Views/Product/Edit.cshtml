@@ -1,5 +1,4 @@
 ﻿@model WebApplication3.Models.Product
-
 @{
     ViewBag.Title = "Edit";
 }
@@ -7,10 +6,11 @@
 <h2>Edit</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Product", FormMethod.Post,
+                                                                            new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Product</h4>
         <hr />
@@ -22,6 +22,15 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.images, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">        
+                <img src=" @Url.Content(@Model.images)" alt="@Model.Name" height="100" width="100" />
+                <input type="file" name="file" id="file" class="btn btn-default" style="width: 100%;" />
+               
             </div>
         </div>
 

@@ -18,6 +18,9 @@
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.images)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Price)
         </th>
         <th></th>
@@ -30,6 +33,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            <img src="@Url.Content(item.images)" alt="IMAGES" width="100" height="100"/>
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Price)
