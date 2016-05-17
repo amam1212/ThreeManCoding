@@ -198,6 +198,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -207,14 +208,25 @@
     <Compile Include="Migrations\201605162008418_New one.Designer.cs">
       <DependentUpon>201605162008418_New one.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605171356170_NewsFeed.cs" />
+    <Compile Include="Migrations\201605171356170_NewsFeed.Designer.cs">
+      <DependentUpon>201605171356170_NewsFeed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605171404126_newtitle.cs" />
+    <Compile Include="Migrations\201605171404126_newtitle.Designer.cs">
+      <DependentUpon>201605171404126_newtitle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\EF\EfDbContext.cs" />
+    <Compile Include="Models\Entities\News.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\GroupedUserViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Entities\Product.cs" />
+    <Compile Include="Models\Repository\INewsRepository.cs" />
     <Compile Include="Models\Repository\IProductRepository.cs" />
+    <Compile Include="Models\Repository\NewsRepository.cs" />
     <Compile Include="Models\Repository\ProductRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -226,6 +238,25 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="ImageView\css\bootstrap-theme.css" />
+    <Content Include="ImageView\css\bootstrap-theme.min.css" />
+    <Content Include="ImageView\css\bootstrap.css" />
+    <Content Include="ImageView\css\bootstrap.min.css" />
+    <Content Include="ImageView\css\index.css" />
+    <Content Include="ImageView\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="ImageView\js\bootstrap.js" />
+    <Content Include="ImageView\js\bootstrap.min.js" />
+    <Content Include="ImageView\js\npm.js" />
+    <Content Include="ImageView\pic\BG.jpg" />
+    <Content Include="ImageView\pic\cart.png" />
+    <Content Include="ImageView\pic\cart1.png" />
+    <Content Include="ImageView\pic\cart2.png" />
+    <Content Include="ImageView\pic\cart3.jpeg" />
+    <Content Include="ImageView\pic\contact.png" />
+    <Content Include="ImageView\pic\pd.jpg" />
+    <Content Include="ImageView\pic\Wat.jpg" />
+    <Content Include="ImageView\pic\Wat2.jpg" />
+    <Content Include="ImageView\pic\WatDoiPhaSom.jpg" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -233,6 +264,15 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="ImageView\css\bootstrap-theme.css.map" />
+    <Content Include="ImageView\css\bootstrap-theme.min.css.map" />
+    <Content Include="ImageView\css\bootstrap.css.map" />
+    <Content Include="ImageView\css\bootstrap.min.css.map" />
+    <Content Include="ImageView\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="ImageView\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="ImageView\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="ImageView\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="ImageView\pic\.DS_Store" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -293,10 +333,14 @@
     <Content Include="Views\Product\FileUpload.cshtml" />
     <Content Include="Views\Product\Delete.cshtml" />
     <Content Include="Views\Product\Create.cshtml" />
+    <Content Include="Views\News\Index.cshtml" />
+    <Content Include="Views\News\Create.cshtml" />
+    <Content Include="Views\News\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="images\" />
+    <Folder Include="Content\Images\News\" />
+    <Folder Include="Content\Images\Product\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -309,6 +353,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201605162008418_New one.resx">
       <DependentUpon>201605162008418_New one.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605171356170_NewsFeed.resx">
+      <DependentUpon>201605171356170_NewsFeed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605171404126_newtitle.resx">
+      <DependentUpon>201605171404126_newtitle.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

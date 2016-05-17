@@ -52,26 +52,32 @@ namespace WebApplication3.Controllers
                 string pathimage = null;
                 Product product = new Product();
                 EfDbContext _context = new EfDbContext();
-                int count = _context.Products.Count();
+
+                int count=0;
+                foreach (Product pro in _context.Products)
+                {
+                    count = int.Parse(pro.ID);
+                    
+                }
                 count++;
+
                 string id = count.ToString();
                 if (file != null)
                 {
                     //string pic = System.IO.Path.GetFileName(file.FileName);
                     string path = System.IO.Path.Combine(
-                                           Server.MapPath("~/images"));
+                                           Server.MapPath("~/Content/Images/Product/"));
                     // file is uploaded
                     string extension = System.IO.Path.GetExtension(file.FileName);
                     string fileName = id;
                     file.SaveAs(System.IO.Path.Combine(path, fileName + extension));
 
                     //file.SaveAs(path);
-                    pathimage = "~/images/" + fileName + extension;
+                    pathimage = "~/Content/Images/Product/" + fileName + extension;
                 }
 
                 
                 var name = collection["Name"];
-                var images = collection["images"];
                 var price = collection["Price"];
                 double ConvertNum = double.Parse(price);
                 
@@ -97,7 +103,7 @@ namespace WebApplication3.Controllers
             {
                 string pic = System.IO.Path.GetFileName(file.FileName);
                 string path = System.IO.Path.Combine(
-                                       Server.MapPath("~/images"), pic);
+                                       Server.MapPath("~/images/Product/"), pic);
                 // file is uploaded
                 file.SaveAs(path);
 
@@ -144,7 +150,7 @@ namespace WebApplication3.Controllers
                 {
                     //string pic = System.IO.Path.GetFileName(file.FileName);
                     string path = System.IO.Path.Combine(
-                                           Server.MapPath("~/images"));
+                                           Server.MapPath("~/Content/Images/Product"));
                     // file is uploaded
                     string extension = System.IO.Path.GetExtension(file.FileName);
                     string fileName = id;
@@ -153,24 +159,29 @@ namespace WebApplication3.Controllers
 
 
                     //file.SaveAs(path);
-                    pathimage = "~/images/" + fileName + extension;
+                    pathimage = "~/Content/Images/Product/" + fileName + extension;
+                }
+                
+                if (file == null)
+                {
+                 
+                    pathimage = p.images;
                 }
 
-
-                Product product = new Product();
                 var name = collection["Name"];
                 var price = collection["Price"];
                 double ConvertNum = double.Parse(price);
-                product.ID = id;
-                product.Name = name;
-                product.Price = ConvertNum;
-                product.images = pathimage;
-                repository.EditProduct(product);
+                p.ID = id;
+                p.Name = name;
+                p.Price = ConvertNum;
+                p.images = pathimage;
+                repository.EditProduct(p);
+                
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return RedirectToAction("Index");
             }
         }
 

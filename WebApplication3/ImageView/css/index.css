@@ -1,0 +1,51 @@
+*{
+    font-family: "Raleway", sans-serif;
+}
+
+.head{
+    width: 100%;
+    height: 100px;
+}
+.nav{
+    width: 100%;
+    height: 700px;
+    background-image: url("../pic/Wat2.jpg");
+}
+.header{
+    color: white;
+}
+.colorhead{
+    color: white;
+}
+.bar{
+    margin-top: 50px;
+    font-size: 20px;
+}
+
+.aa{
+    margin-top: 200px;
+}
+.bb{
+    margin-top: 20px;
+}
+.cc{
+    margin-top: 10px;
+    color: white;
+}
+.dd{
+    margin-top: -25px;
+    margin-left: -25px;
+}
+.picfix{
+    width: 90%;
+    height: 400px;
+}
+.rowproduct1{
+    margin-top: 50px;
+}
+.bgproduct{
+    background-color: #8c8c8c;
+}
+.bg {
+
+}

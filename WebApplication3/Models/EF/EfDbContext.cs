@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using WebApplication3.Models.Entities;
 
 namespace WebApplication3.Models.EF
 {
@@ -14,6 +15,7 @@ namespace WebApplication3.Models.EF
         }
 
         public DbSet<Product> Products { get; set; }
+        public DbSet<News> Newsfeed { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

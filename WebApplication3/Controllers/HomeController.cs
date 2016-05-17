@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebApplication3.Models.Repository;
 
 namespace WebApplication3.Controllers
 {
     public class HomeController : Controller
     {
+        INewsRepository news = new NewsRepository();
         public ActionResult Index()
         {
-            return View();
+            
+            return View(news.GetNews());
         }
 
         public ActionResult About()

@@ -204,16 +204,16 @@ namespace WebApplication3.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditRoleForUser(string UserName, string RoleName)
+        public ActionResult EditRoleForUser(string UserName, string Roles)
         {
             string oldrole = null;
             ApplicationUser user = context.Users.Where(u => u.UserName.Equals(UserName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
-            if (RoleName.Equals("Retail")) { oldrole = "Wholesale"; }
-            if (RoleName.Equals("Wholesale")) { oldrole = "Retail"; }
+            if (Roles.Equals("Retail")) { oldrole = "Wholesale"; }
+            if (Roles.Equals("Wholesale")) { oldrole = "Retail"; }
             if (this.UserManager.IsInRole(user.Id, oldrole))
             {
                 this.UserManager.RemoveFromRole(user.Id, oldrole);
-                this.UserManager.AddToRole(user.Id, RoleName);
+                this.UserManager.AddToRole(user.Id, Roles);
             }
 
                 
@@ -224,7 +224,7 @@ namespace WebApplication3.Controllers
             var list = context.Roles.OrderBy(r => r.Name).ToList().Select(rr => new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
             ViewBag.Roles = list;
 
-            return View("ManageUserRoles");
+            return RedirectToAction("GetUsers");
         }
 
     }
