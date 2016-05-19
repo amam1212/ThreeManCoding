@@ -1,7 +1,7 @@
-@model IEnumerable<WebApplication3.Models.Product>
+﻿@model IEnumerable<WebApplication3.Models.Product>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Retail";
 }
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -52,9 +52,6 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -68,9 +65,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Retail_Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Wholesale_Price)
         </th>
         <th></th>
     </tr>
@@ -91,12 +85,8 @@
                 @Html.DisplayFor(modelItem => item.Retail_Price)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Wholesale_Price)
-            </td>
-            <td>
-                <a href="#" class="AddLink"data-id="@item.ID" data-toggle="modal" data-target="#myModal">Add to cart</a> |
+                <a href="#" class="AddLink" data-id="@item.ID" data-toggle="modal" data-target="#myModal">Add to cart</a> |
                 @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
             </td>
         </tr>
     }

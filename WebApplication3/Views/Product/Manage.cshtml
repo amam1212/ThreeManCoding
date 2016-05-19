@@ -1,0 +1,58 @@
+﻿@model IEnumerable<WebApplication3.Models.Product>
+
+@{
+    ViewBag.Title = "Manage";
+}
+
+<h2>Manage</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Images)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Retail_Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Wholesale_Price)
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            <img src="@Url.Content(item.Images)" alt="IMAGES" width="100" height="100"/>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Retail_Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Wholesale_Price)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -14,27 +14,45 @@ namespace WebApplication3.Controllers
 
         ProductRepository repository = new ProductRepository();
         // GET: Product
+
         public ActionResult Index()
+        {
+            //var isRetail = User.IsInRole("Retail");
+            if (User.IsInRole("Retail"))
+            {
+                return RedirectToAction("Retail");
+            }
+            if (User.IsInRole("Wholesale"))
+            {
+                return RedirectToAction("Wholesale");
+            }
+            return View();
+        }
+
+        // GET: Product
+
+        public ActionResult Retail()
+        {
+            return View(repository.GetAllProduct());
+        }
+
+        public ActionResult Wholesale()
         {
             return View(repository.GetAllProduct());
         }
 
 
-        [HttpPost]
-        public ActionResult Index(Product p)
+
+        public ActionResult Manage()
         {
-            repository.AddProduct(p);
-            //Test commit
-            return RedirectToAction("Index");
+            return View(repository.GetAllProduct());
         }
 
 
-
-
         // GET: Product/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(string id)
         {
-            return View();
+            return View(repository.GetProductByID(id));
         }
 
         // GET: Product/Create
@@ -78,17 +96,19 @@ namespace WebApplication3.Controllers
 
                 
                 var name = collection["Name"];
-                var price = collection["Price"];
-                double ConvertNum = double.Parse(price);
+                var retailprice = collection["Retail_Price"];
+                var wholesaleprice = collection["Wholesale_Price"];
+                double ConvertNum = double.Parse(retailprice);
                 
                 product.ID = id;
                 product.Name = name;
-                product.images = pathimage;
-                product.Price = ConvertNum;
+                product.Images = pathimage;
+                product.Retail_Price = double.Parse(retailprice);
+                product.Wholesale_Price = double.Parse(wholesaleprice);
 
                 repository.AddProduct(product);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Manage");
             }
             catch
             {
@@ -138,10 +158,10 @@ namespace WebApplication3.Controllers
             {
 
                 Product p = repository.GetProductByID(id);
-                if (System.IO.File.Exists(Server.MapPath(p.images)))
+                if (System.IO.File.Exists(Server.MapPath(p.Images)))
                 {
 
-                    System.IO.File.Delete(Server.MapPath(p.images));
+                    System.IO.File.Delete(Server.MapPath(p.Images));
                 }
 
 
@@ -165,23 +185,25 @@ namespace WebApplication3.Controllers
                 if (file == null)
                 {
                  
-                    pathimage = p.images;
+                    pathimage = p.Images;
                 }
 
                 var name = collection["Name"];
-                var price = collection["Price"];
-                double ConvertNum = double.Parse(price);
+                var retailprice = collection["Retail_Price"];
+                var wholesaleprice = collection["Wholesale_Price"];
+
                 p.ID = id;
                 p.Name = name;
-                p.Price = ConvertNum;
-                p.images = pathimage;
+                p.Retail_Price = double.Parse(retailprice);
+                p.Wholesale_Price = double.Parse(wholesaleprice);
+                p.Images = pathimage;
                 repository.EditProduct(p);
                 
-                return RedirectToAction("Index");
+                return RedirectToAction("Manage");
             }
             catch
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Manage");
             }
         }
 
@@ -200,14 +222,14 @@ namespace WebApplication3.Controllers
             {
                 // TODO: Add delete logic here
                 Product product = repository.GetProductByID(id);
-                if (System.IO.File.Exists(Server.MapPath(product.images)))
+                if (System.IO.File.Exists(Server.MapPath(product.Images)))
                 {
 
-                    System.IO.File.Delete(Server.MapPath(product.images));
+                    System.IO.File.Delete(Server.MapPath(product.Images));
                 }
 
                 repository.DeleteProduct(id);
-                return RedirectToAction("Index");
+                return RedirectToAction("Manage");
             }
             catch
             {
