@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
+using System.ComponentModel;
 
 namespace WebApplication3.Models
 {
@@ -65,20 +66,36 @@ namespace WebApplication3.Models
         [Display(Name = "PhoneNumber")]
         public string PhoneNumber { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "TESSST", MinimumLength = 6)]
-        [Display(Name = "Name")]
-        public string Name { get; set; }
+        [Required(ErrorMessage = "First Name is required")]
+        [DisplayName("First Name")]
+        [StringLength(160)]
+        public string FirstName { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "TESSST", MinimumLength = 6)]
-        [Display(Name = "LastName")]
+        [Required(ErrorMessage = "Last Name is required")]
+        [DisplayName("Last Name")]
+        [StringLength(160)]
         public string LastName { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "TESSST", MinimumLength = 6)]
-        [Display(Name = "Address")]
+        [Required(ErrorMessage = "Address is required")]
+        [StringLength(70)]
         public string Address { get; set; }
+
+        [Required(ErrorMessage = "City is required")]
+        [StringLength(40)]
+        public string City { get; set; }
+
+        [Required(ErrorMessage = "Province is required")]
+        [StringLength(40)]
+        public string Province { get; set; }
+
+        [Required(ErrorMessage = "Postal Code is required")]
+        [DisplayName("Postal Code")]
+        [StringLength(10)]
+        public string PostalCode { get; set; }
+
+        [Required(ErrorMessage = "Country is required")]
+        [StringLength(40)]
+        public string Country { get; set; }
     }
 
 

@@ -160,7 +160,7 @@ namespace WebApplication3.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Name = model.Name, LastName = model.LastName, PhoneNumber = model.PhoneNumber, Address = model.Address };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, Address = model.Address, PhoneNumber = model.PhoneNumber, City = model.City , Province = model.Province , PostalCode  = model.PostalCode , Country = model.Country };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

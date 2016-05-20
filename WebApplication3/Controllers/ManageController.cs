@@ -258,9 +258,13 @@ namespace WebApplication3.Controllers
             // Construct the viewmodel
             EditInfoViewModel model = new EditInfoViewModel();
             model.PhoneNumber = user.PhoneNumber;
-            model.Name = user.Name;
+            model.FirstName = user.FirstName;
             model.LastName = user.LastName;
             model.Address = user.Address;
+            model.City = user.City;
+            model.Province = user.Province;
+            model.PostalCode = user.PostalCode;
+            model.Country = user.Country;
             return View(model);
 
         }
@@ -272,9 +276,15 @@ namespace WebApplication3.Controllers
         public async Task<ActionResult> EditInfo(EditInfoViewModel model)
         {
             var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-            
-                user.Name = model.Name;
-                user.LastName = model.LastName;
+
+            user.PhoneNumber = model.PhoneNumber;
+            user.FirstName = model.FirstName;
+            user.LastName = model.LastName;
+            user.Address = model.Address;
+            user.City = model.City;
+            user.Province = model.Province;
+            user.PostalCode = model.PostalCode;
+            user.Country = model.Country;
             IdentityResult result = await UserManager.UpdateAsync(user);
             return View();
 

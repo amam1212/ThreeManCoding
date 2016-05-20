@@ -33,6 +33,7 @@ namespace WebApplication3.Controllers
             
 
             var wholesale = roleManager.FindByName("Wholesale").Users.First();
+
                 var usersInRole = allusers.Where(u => u.Roles.Select(r => r.RoleId).Contains(wholesale.RoleId)).ToList();
                 var userwholesale = usersInRole.Select(user => new UserViewModel { Username = user.UserName, Roles = "Wholesale" }).ToList();
 

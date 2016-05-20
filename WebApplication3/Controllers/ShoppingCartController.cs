@@ -13,7 +13,7 @@ namespace ShoppingCartController.Controllers
     public class ShoppingCartController : Controller
     {
 
-        ShoppingCartRepository ShoppingCart = new ShoppingCartRepository();
+        IShoppingCartRepository ShoppingCart = new ShoppingCartRepository();
         EfDbContext storeDB = new EfDbContext();
         //
         // GET: /ShoppingCart/

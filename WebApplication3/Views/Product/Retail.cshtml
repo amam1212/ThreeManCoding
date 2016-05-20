@@ -9,10 +9,12 @@
             // Document.ready -> link up remove event handler
             $(".AddLink").click(function () {
                 // Get the id from the link
+
                 var recordToAdd = $(this).attr("data-id");
+                var recordToAdd2 = document.getElementById("Amount").value;
                 if (recordToAdd != '') {
                     // Perform the ajax post
-                    $.post("/ShoppingCart/AddToCart", { "id": recordToAdd, "amount": 5 },
+                    $.post("/ShoppingCart/AddToCart", { "id": recordToAdd, "amount": recordToAdd2 },
                         function (data) {
                             $('#cart-status').text(data.CartCount);
                         });
@@ -50,13 +52,10 @@
 
 
 
-<h2>Index</h2>
+<h2>Retail Product</h2>
 
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ID)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
@@ -64,7 +63,10 @@
             @Html.DisplayNameFor(model => model.Images)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Retail_Price)
+           Quantity
+        </th>
+        <th>
+            Retail Price
         </th>
         <th></th>
     </tr>
@@ -73,13 +75,14 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ID)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
                 <img src="@Url.Content(item.Images)" alt="IMAGES" width="100" height="100" />
+            </td>
+            <td>
+                <input type="number" id="Amount" value="" min="1" max="10" step="1">
+            
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Retail_Price)

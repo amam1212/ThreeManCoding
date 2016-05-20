@@ -28,7 +28,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Images, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">        
-                <img src=" @Url.Content(@Model.Images)" alt="@Model.Name" height="100" width="100" />
+                <img src=" @Url.Content(@Model.Images)" alt="@Model.Images" height="100" width="100" />
                 <input type="file" name="file" id="file" class="btn btn-default" style="width: 100%;" />
                
             </div>

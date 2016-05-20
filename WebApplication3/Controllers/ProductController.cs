@@ -26,16 +26,17 @@ namespace WebApplication3.Controllers
             {
                 return RedirectToAction("Wholesale");
             }
-            return View();
+            return View(repository.GetAllProduct());
         }
 
         // GET: Product
-
+        [Authorize(Roles = "Retail")]
         public ActionResult Retail()
         {
             return View(repository.GetAllProduct());
         }
 
+        [Authorize(Roles = "Wholesale")]
         public ActionResult Wholesale()
         {
             return View(repository.GetAllProduct());

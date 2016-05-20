@@ -16,6 +16,6 @@ namespace WebApplication3.Models
         public string Description { get; set; }
         public double Retail_Price { get; set; }
         public double Wholesale_Price { get; set; }
-
+        public virtual List<OrderDetail> OrderDetails { get; set; }
     }
 }

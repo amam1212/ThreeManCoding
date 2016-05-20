@@ -1,65 +1,15 @@
 @model IEnumerable<WebApplication3.Models.Product>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Prodcut";
+
 }
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script type="text/javascript">
-        $(function () {
-            // Document.ready -> link up remove event handler
-            $(".AddLink").click(function () {
-                // Get the id from the link
-                var recordToAdd = $(this).attr("data-id");
-                if (recordToAdd != '') {
-                    // Perform the ajax post
-                    $.post("/ShoppingCart/AddToCart", { "id": recordToAdd, "amount": 5 },
-                        function (data) {
-                            $('#cart-status').text(data.CartCount);
-                        });
-                }
-            });
-        });
-</script>
 
 
+<h2>Product</h2>
 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-
-    <div aria-hidden="true" class="alert alert-dismissable alert-success">
-        <button type="button" class="close" data-dismiss="alert">?</button>
-        <strong>An item was added to your cart.</strong> To check out now simply <a href="#" class="alert-link">click here</a>.
-    </div>
-
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">?</button>
-                <h4 class="modal-title">Confirm check out.</h4>
-            </div>
-            <div class="modal-body">
-                <p>Would you like to check out or keep shopping??</p>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Continue</button>
-                <button type="submit" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "ShoppingCart")'">Check Out</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ID)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
@@ -67,10 +17,10 @@
             @Html.DisplayNameFor(model => model.Images)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Retail_Price)
+             Retail Price 
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Wholesale_Price)
+             Wholesale Price 
         </th>
         <th></th>
     </tr>
@@ -78,9 +28,6 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ID)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
@@ -94,9 +41,8 @@
                 @Html.DisplayFor(modelItem => item.Wholesale_Price)
             </td>
             <td>
-                <a href="#" class="AddLink"data-id="@item.ID" data-toggle="modal" data-target="#myModal">Add to cart</a> |
+                <a href="~/Account/Login">Add to cart</a> |
                 @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
             </td>
         </tr>
     }

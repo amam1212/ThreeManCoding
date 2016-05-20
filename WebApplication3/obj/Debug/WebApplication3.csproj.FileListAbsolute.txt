@@ -80,5 +80,9 @@ C:\Users\DELL\Documents\Visual Studio 2015\Projects\WebApplication3\WebApplicati
 C:\Users\DELL\Documents\Visual Studio 2015\Projects\WebApplication3\WebApplication3\obj\Debug\WebApplication3.dll
 C:\Users\DELL\Documents\Visual Studio 2015\Projects\WebApplication3\WebApplication3\obj\Debug\WebApplication3.pdb
 C:\Users\DELL\Documents\Visual Studio 2015\Projects\WebApplication3\WebApplication3\obj\Debug\WebApplication3.csprojResolveAssemblyReference.cache
-C:\Users\DELL\Documents\Visual Studio 2015\Projects\WebApplication3\WebApplication3\obj\Debug\WebApplication3.Migrations.newonew.resources
+C:\Users\DELL\Documents\Visual Studio 2015\Projects\WebApplication3\WebApplication3\bin\PagedList.dll
+C:\Users\DELL\Documents\Visual Studio 2015\Projects\WebApplication3\WebApplication3\bin\PagedList.Mvc.dll
+C:\Users\DELL\Documents\Visual Studio 2015\Projects\WebApplication3\WebApplication3\bin\PagedList.xml
+C:\Users\DELL\Documents\Visual Studio 2015\Projects\WebApplication3\WebApplication3\bin\PagedList.Mvc.xml
+C:\Users\DELL\Documents\Visual Studio 2015\Projects\WebApplication3\WebApplication3\obj\Debug\WebApplication3.Migrations._new.resources
 C:\Users\DELL\Documents\Visual Studio 2015\Projects\WebApplication3\WebApplication3\obj\Debug\WebApplication3.csproj.GenerateResource.Cache

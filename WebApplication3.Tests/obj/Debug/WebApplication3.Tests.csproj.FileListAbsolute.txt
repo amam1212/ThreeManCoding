@@ -54,3 +54,5 @@ C:\Users\DELL\Documents\Visual Studio 2015\Projects\WebApplication3\WebApplicati
 C:\Users\DELL\Documents\Visual Studio 2015\Projects\WebApplication3\WebApplication3.Tests\obj\Debug\WebApplication3.Tests.csprojResolveAssemblyReference.cache
 C:\Users\DELL\Documents\Visual Studio 2015\Projects\WebApplication3\WebApplication3.Tests\obj\Debug\WebApplication3.Tests.dll
 C:\Users\DELL\Documents\Visual Studio 2015\Projects\WebApplication3\WebApplication3.Tests\obj\Debug\WebApplication3.Tests.pdb
+C:\Users\DELL\Documents\Visual Studio 2015\Projects\WebApplication3\WebApplication3.Tests\bin\Debug\PagedList.dll
+C:\Users\DELL\Documents\Visual Studio 2015\Projects\WebApplication3\WebApplication3.Tests\bin\Debug\PagedList.xml

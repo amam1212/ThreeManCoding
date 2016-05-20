@@ -179,6 +179,43 @@ namespace WebApplication3.Models.Repository
             return total ?? decimal.Zero;
         }
 
+        public Order CreateOrder(Order order)
+        {
+            decimal orderTotal = 0;
+            order.OrderDetails = new List<OrderDetail>();
+
+            var cartItems = GetCartItems();
+            // Iterate over the items in the cart, 
+            // adding the order details for each
+            
+            foreach (var item in cartItems)
+            {
+           
+        
+                var orderDetail = new OrderDetail
+                {
+                    ItemId = int.Parse(item.productId),
+                    OrderId = order.OrderId,
+                    UnitPrice = (decimal)(item.product.Retail_Price),
+                    Quantity = item.Count
+                };
+                // Set the order total of the shopping cart
+                orderTotal += (decimal)(item.Count * item.product.Retail_Price);
+                order.OrderDetails.Add(orderDetail);
+                _context.OrderDetails.Add(orderDetail);
+
+            }
+            // Set the order's total to the orderTotal count
+            order.Total = orderTotal;
+
+            // Save the order
+            _context.SaveChanges();
+            // Empty the shopping cart
+            EmptyCart();
+            // Return the OrderId as the confirmation number
+            return order;
+        }
+
 
         // We're using HttpContextBase to allow access to cookies.
         public string GetCartId(HttpContextBase context)
@@ -201,6 +238,9 @@ namespace WebApplication3.Models.Repository
             return context.Session[CartSessionKey].ToString();
         }
 
+
+
+
         // When a user has logged in, migrate their shopping cart to
         // be associated with their username
         public void MigrateCart(string userName)
@@ -214,5 +254,8 @@ namespace WebApplication3.Models.Repository
             }
             _context.SaveChanges();
         }
+
+
+
     }
 }
